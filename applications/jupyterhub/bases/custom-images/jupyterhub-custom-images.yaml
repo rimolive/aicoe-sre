@@ -281,3 +281,23 @@ spec:
     importPolicy:
       scheduled: true
     name: "latest"
+
+
+# Landon version for spark 3 notebook
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  labels:
+    opendatahub.io/notebook-image: "true"
+  name: llasmith-spark-minimal-notebook
+spec:
+  lookupPolicy:
+    local: true
+  tags:
+  - from:
+      kind: DockerImage
+      name: quay.io/llasmith/s2i-spark-minimal-notebook:spark-3.0_hadoop-3.2.0_jdk-11
+    importPolicy:
+      scheduled: true
+    name: "latest"
